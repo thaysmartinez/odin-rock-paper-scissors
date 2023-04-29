@@ -1,22 +1,30 @@
 /*
-1. Write a function that gets the computer selection and return either 'rock', 'paper' or 'scissors'.
-2. Write a function that takes player selection and computer selection as parameters, and return string declaring the winner.
-    a) Function must be case insensitive (toLower function)
+Author: Thays Martinez
+
 */
 
 function getComputerChoice () {
-    // Return a random value from array
+    /* 
+    This function returns a random value from array of 3 possible values:
+        1. Rock
+        2. Paper
+        3. Scissors
+    */
     const choiceArray = ['rock', 'paper', 'scissors'];
-    
     var randomChoice = choiceArray[Math.floor(Math.random() * choiceArray.length)];
 
     return randomChoice;
 }
 
-function getPlayerChoice ()
-{
+function getPlayerChoice () {
+    /*
+    This function prompts the user for a choice 
+    between 'rock', 'paper' or 'scissors'
+    */
+
     var playerChoice;
 
+    // Prompts the user until a valid value is entered
     do {
         playerChoice = prompt("Enter your choice between \"rock\", \"paper\" and \"scissors\"").toLowerCase();
     }
@@ -28,51 +36,46 @@ function getPlayerChoice ()
 
 
 function playRound(playerSelection, computerSelection) {
-
-    // let playerSelection = getPlayerChoice();
-    // let computerSelection = getComputerChoice();
-
-    // const playerLose = `You lose: ${computerSelection} beats ${playerSelection}!`;
-    // const computerLose = `You won: ${playerSelection} beats ${computerSelection}!`;
-    // const tie = `It\'s a tie: you and the computer chose ${computerSelection}`;
-
-    // console.log(`Your choice: ${playerSelection}`);
-    // console.log(`Computer's choice: ${computerSelection}`);
+    /* 
+    This function gets the player's choice, the computer's choice 
+    and return the winner of the round
+    */
 
     if (playerSelection === "paper" & computerSelection === "rock") {
-        // console.log(computerLose);
         return result = "player";
     } else if (playerSelection === "rock" & computerSelection === "scissors") {
-        // console.log(computerLose);
         return result = "player";
     } else if (playerSelection === "scissors" & computerSelection === "paper") {
-        // console.log(computerLose);
         return result = "player";
     } else if (playerSelection === computerSelection) {
-        // console.log(tie);
         return result = "tie";
     } else {
-        // console.log(playerLose);
         return result = "computer"
     }
 }
 
 function game () {
-    
+    /*
+    This function returns the final winner of a 5-round rock, paper, scissors contest
+    */
     var roundWinner;
     var computer = 0;
     var player = 0;
 
+    // Loop through each round 5 times
     for (let i = 1; i <= 5; i++) {
         let playerSelection = getPlayerChoice();
         let computerSelection = getComputerChoice();
 
+        // Store the round's possible results as a string
         let playerLose = `You lose: ${computerSelection} beats ${playerSelection}!`;
         let computerLose = `You won: ${playerSelection} beats ${computerSelection}!`;
         let tie = `It\'s a tie: you and the computer chose ${computerSelection}`;
 
+        // Get the winner of the round
         roundWinner = playRound(playerSelection, computerSelection);
 
+        // Store the score of the round
         if (roundWinner === 'computer') {
             console.log(`Round ${i} - ${playerLose}`);
             computer++;
@@ -84,8 +87,9 @@ function game () {
         }
     }
 
+    // Return the final winner
     if (computer > player) {
-        return (`Final result - Computer wins! Your Score: ${player} Computer's Score: ${computer}`);
+        return (`Final result - Computer won! Your Score: ${player} Computer's Score: ${computer}`);
     } else if (computer < player) {
         return (`Final result - You win! Your Score: ${player} Computer's Score: ${computer}`);
     } else {
@@ -93,4 +97,5 @@ function game () {
     }
 }
 
+// Return final score and game winner
 console.log(game());
