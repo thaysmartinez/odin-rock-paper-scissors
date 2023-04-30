@@ -40,16 +40,18 @@ function playRound(playerSelection, computerSelection) {
     and return the winner of the round
     */
 
-    if (playerSelection === "paper" & computerSelection === "rock") {
-        return result = "player";
-    } else if (playerSelection === "rock" & computerSelection === "scissors") {
-        return result = "player";
-    } else if (playerSelection === "scissors" & computerSelection === "paper") {
-        return result = "player";
-    } else if (playerSelection === computerSelection) {
-        return result = "tie";
-    } else {
-        return result = "computer"
+    switch(true){
+        case (playerSelection === "paper" && computerSelection === "rock"):
+        case (playerSelection === "rock" & computerSelection === "scissors"):
+        case (playerSelection === "scissors" & computerSelection === "paper"):
+            return result = "player";
+            
+        case (playerSelection === computerSelection):
+            return  result = "tie";
+
+        default:
+            return result = "computer"
+
     }
 }
 
