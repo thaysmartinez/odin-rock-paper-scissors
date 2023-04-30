@@ -1,6 +1,5 @@
 /*
 Author: Thays Martinez
-
 */
 
 function getComputerChoice () {
