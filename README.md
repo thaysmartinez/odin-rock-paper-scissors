@@ -25,6 +25,7 @@ To view the results, open the browser console. Press the `Cmd` + `option` + `J` 
 - If...Else statements: to check who wins the round (and the game) based on any combination of _rock_, _paper_ and _scissors_
 - Template literals: to log on the console each intermediate result and the final result of the game
 
-## Strugges
+## Struggles
 
--
+I tried to use `switch` statement instead of `If... Else`, but the program returned incorrect values.
+After a close look at my code, I noticed was using bitwise operator `&` instead of the binary logic operator `&&` in the `case` clause. It was quite hard to discover as it doesn't generate a `SyntaxError`. A small and silly mistake that took a good while to solve and a lot of brain power.
