@@ -7,7 +7,7 @@ You will be asked for a choice between 'Rock', 'Paper' or 'Scissors' 5 times. Af
 
 ## How to start the game
 
-The For the moment, the game should be played from the browser console.
+For the moment, the game should be played from the browser console.
 Open the index.html file, which for now shows a blank page. As soon as the browser opens, you'll be prompted for a choice between **rock**, **paper** or **scissors**. Play alog the five rounds.
 ![prompt](./img/prompt.jpg)
 
@@ -21,11 +21,17 @@ To view the results, open the browser console. Press the `Cmd` + `option` + `J` 
 - Loops:
   - Do While loop: prompt the user for their choice n times until the correct spelling of _rock_, _paper_ and _scissors_ is given
   - For loop: to run 5 rounds of the game by prompting the user for their choice each time
-- String functions: `toLowerCase()` make the user's input case-insensitive
-- If...Else statements: to check who wins the round (and the game) based on any combination of _rock_, _paper_ and _scissors_
+- String functions: `toLowerCase()` make user's input case-insensitive
+- Conditionals:
+  - Switch statement: to check who wins the round based on any combination of _rock_, _paper_ and _scissors_
+  - If...Else statements: to check who wins the game
 - Template literals: to log on the console each intermediate result and the final result of the game
 
 ## Struggles
 
 I tried to use `switch` statement instead of `If... Else`, but the program returned incorrect values.
-After a close look at my code, I noticed was using bitwise operator `&` instead of the binary logic operator `&&` in the `case` clause. It was quite hard to discover as it doesn't generate a `SyntaxError`. A small and silly mistake that took a good while to solve and a lot of brain power.
+After a closer look at my code, I noticed I was using **Bitwise AND** operator `&` instead of the **Binary Logic** operator `&&` in the `case` clause. It was quite hard to discover as it didn't generate a `SyntaxError` message. A small and silly mistake that took a good while and a lot of brain power to solve.
+
+## Final Thoughts
+
+In this very first stage of the game, I could practice the fundamentals of JavaScript. It's solely developed for browser console output. Next step is to transfer the gameplay to the browser window instead, appling HTML and CSS to improve the player experience.
