@@ -1,5 +1,6 @@
 html,
 body {
+  font-family: "Inconsolata", sans-serif;
   margin: 0px;
   padding: 0px;
   height: 100vh;
@@ -8,7 +9,6 @@ body {
 
 .header,
 .footer {
-  font-family: "Inconsolata", sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -27,6 +27,14 @@ body {
   width: 200px;
   font-size: 1em;
   border-radius: 1em;
+}
+
+.score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #f1faee;
+  font-weight: 500;
 }
 
 .footer {

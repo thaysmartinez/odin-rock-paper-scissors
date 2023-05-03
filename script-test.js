@@ -1,10 +1,9 @@
 // Get user choice
 const rpsButtons = document.querySelectorAll("button");
-// console.log(rockButton.dataset.choice);
+const divScore = document.querySelector(".score");
 
 rpsButtons.forEach((button) => {
   button.addEventListener("click", () => {
-    // console.log(button.dataset.choice);
     playRound(button.dataset.choice, getComputerChoice());
   });
 });
@@ -21,16 +20,21 @@ function getComputerChoice() {
 function playRound(playerSelection, computerSelection) {
   console.log(playerSelection, computerSelection);
   // Computes the result of the round
-  switch (true) {
-    case playerSelection === "paper" && computerSelection === "rock":
-    case (playerSelection === "rock") & (computerSelection === "scissors"):
-    case (playerSelection === "scissors") & (computerSelection === "paper"):
-      return alert("player wins!");
-
-    case playerSelection === computerSelection:
-      return alert("it's a tie");
-
-    default:
-      return alert("computer wins!");
+  let roundResult;
+  if (playerSelection === "paper" && computerSelection === "rock") {
+    roundResult = "player wins!";
+  } else if (playerSelection === "rock" && computerSelection === "scissors") {
+    roundResult = "player wins!";
+  } else if (playerSelection === "scissors" && computerSelection === "paper") {
+    roundResult = "player wins!";
+  } else if (playerSelection === computerSelection) {
+    roundResult = "it's a tie!";
+  } else {
+    roundResult = "computer wins!";
   }
+
+  const paraElement = document.createElement("p");
+  divScore.appendChild(paraElement);
+  paraElement.setAttribute("class", "round-score");
+  paraElement.textContent = roundResult;
 }
