@@ -2,12 +2,6 @@
 const rpsButtons = document.querySelectorAll("button");
 const divScore = document.querySelector(".score");
 
-rpsButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    playRound(button.dataset.choice, getComputerChoice());
-  });
-});
-
 function getComputerChoice() {
   // Returns a random value from array of 3 possible values
   const choiceArray = ["rock", "paper", "scissors"];
@@ -18,23 +12,60 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
-  console.log(playerSelection, computerSelection);
-  // Computes the result of the round
+  let roundDisplay;
   let roundResult;
-  if (playerSelection === "paper" && computerSelection === "rock") {
-    roundResult = "player wins!";
-  } else if (playerSelection === "rock" && computerSelection === "scissors") {
-    roundResult = "player wins!";
-  } else if (playerSelection === "scissors" && computerSelection === "paper") {
-    roundResult = "player wins!";
-  } else if (playerSelection === computerSelection) {
-    roundResult = "it's a tie!";
-  } else {
-    roundResult = "computer wins!";
-  }
 
+  if (playerSelection === "paper" && computerSelection === "rock") {
+    roundDisplay = "player wins!";
+    roundResult = "player";
+  } else if (playerSelection === "rock" && computerSelection === "scissors") {
+    roundDisplay = "player wins";
+    roundResult = "player";
+  } else if (playerSelection === "scissors" && computerSelection === "paper") {
+    roundDisplay = "player wins";
+    roundResult = "player";
+  } else if (playerSelection === computerSelection) {
+    roundDisplay = "it's a tie!";
+    roundResult = "tie";
+  } else {
+    roundDisplay = "computer wins";
+    roundResult = "computer";
+  }
+  appendHTMLElement(roundDisplay);
+  return roundResult;
+}
+
+function appendHTMLElement(result) {
   const paraElement = document.createElement("p");
   divScore.appendChild(paraElement);
-  paraElement.setAttribute("class", "round-score");
-  paraElement.textContent = roundResult;
+  paraElement.textContent = result;
 }
+
+function game() {
+  let userScore = 0;
+  let computerScore = 0;
+  let roundWinner;
+  let gameWinner;
+
+  rpsButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      roundWinner = playRound(button.dataset.choice, getComputerChoice());
+      if (roundWinner === "player") {
+        userScore++;
+      } else if (roundWinner === "computer") {
+        computerScore++;
+      }
+
+      console.log(userScore, computerScore);
+      if (userScore === 5 || computerScore === 5) {
+        userScore > computerScore
+          ? (gameWinner = "player")
+          : (gameWinner = "computer");
+        appendHTMLElement(`FINAL RESULT: ${gameWinner} wins!`);
+        return;
+      }
+    });
+  });
+}
+
+game();
