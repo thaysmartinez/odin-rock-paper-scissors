@@ -32,6 +32,12 @@ body {
   font-size: 6em;
   border-radius: 20px;
   border: 0;
+  transition: background-color 0.5s, transform 0.5s;
+}
+
+.btn:hover {
+  background-color: #8d99ae;
+  transform: scale(1.05, 1.05);
 }
 
 .choices,
