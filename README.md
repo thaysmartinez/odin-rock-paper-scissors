@@ -7,7 +7,7 @@ This is the second iteration of the game "Rock Paper Scissors" implementation. T
 In this game you will play against the computer the grade-class "Rock, Paper and Scissors" directly on the browser.
 After each round, the running score is displayed. Wins who reaches 5 points first.
 
-Click here to start the game: [https://thaysmartinez.github.io/rock-paper-scissors/]
+Click here to start the game: https://thaysmartinez.github.io/rock-paper-scissors/
 
 ## What I learned
 
