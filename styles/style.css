@@ -5,6 +5,8 @@ body {
   padding: 0px;
   height: 100vh;
   background-color: #2b2d42;
+  display: flex;
+  flex-direction: column;
 }
 
 .header,
@@ -25,16 +27,28 @@ body {
 .btn {
   height: 200px;
   width: 200px;
-  font-size: 4em;
+  font-size: 6em;
   border-radius: 20px;
+  border: 0;
 }
 
-.score {
+.choices,
+.running-score {
   display: flex;
   flex-direction: column;
   align-items: center;
   color: #f1faee;
   font-weight: 500;
+}
+
+.running-score {
+  height: 100vh;
+}
+
+.choices {
+  font-size: 2em;
+  height: 600px;
+  justify-content: space-evenly;
 }
 
 .footer {

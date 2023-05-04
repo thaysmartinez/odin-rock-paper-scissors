@@ -1,6 +1,14 @@
 // Get user choice
 const rpsButtons = document.querySelectorAll("button");
-const divScore = document.querySelector(".score");
+const divScore = document.querySelector(".running-score");
+const spanPlayer = document.querySelector(".score-player");
+const spanComputer = document.querySelector(".score-computer");
+
+function appendHTMLElement(result) {
+  const paraElement = document.createElement("p");
+  divScore.appendChild(paraElement);
+  paraElement.textContent = result;
+}
 
 function getComputerChoice() {
   // Returns a random value from array of 3 possible values
@@ -15,18 +23,16 @@ function playRound(playerSelection, computerSelection) {
   let roundDisplay;
   let roundResult;
 
-  if (playerSelection === "paper" && computerSelection === "rock") {
-    roundDisplay = "player wins!";
-    roundResult = "player";
-  } else if (playerSelection === "rock" && computerSelection === "scissors") {
-    roundDisplay = "player wins";
-    roundResult = "player";
-  } else if (playerSelection === "scissors" && computerSelection === "paper") {
-    roundDisplay = "player wins";
-    roundResult = "player";
-  } else if (playerSelection === computerSelection) {
+  if (playerSelection === computerSelection) {
     roundDisplay = "it's a tie!";
     roundResult = "tie";
+  } else if (
+    (playerSelection === "paper" && computerSelection === "rock") ||
+    (playerSelection === "rock" && computerSelection === "scissors") ||
+    (playerSelection === "scissors" && computerSelection === "paper")
+  ) {
+    roundDisplay = "player wins";
+    roundResult = "player";
   } else {
     roundDisplay = "computer wins";
     roundResult = "computer";
@@ -35,25 +41,24 @@ function playRound(playerSelection, computerSelection) {
   return roundResult;
 }
 
-function appendHTMLElement(result) {
-  const paraElement = document.createElement("p");
-  divScore.appendChild(paraElement);
-  paraElement.textContent = result;
-}
-
 function game() {
   let userScore = 0;
   let computerScore = 0;
   let roundWinner;
   let gameWinner;
 
+  spanPlayer.textContent = userScore;
+  spanComputer.textContent = computerScore;
+
   rpsButtons.forEach((button) => {
     button.addEventListener("click", () => {
       roundWinner = playRound(button.dataset.choice, getComputerChoice());
       if (roundWinner === "player") {
         userScore++;
+        spanPlayer.textContent = userScore;
       } else if (roundWinner === "computer") {
         computerScore++;
+        spanComputer.textContent = computerScore;
       }
 
       console.log(userScore, computerScore);
